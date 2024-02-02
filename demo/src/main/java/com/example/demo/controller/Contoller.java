@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.model.LoginRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -21,6 +22,8 @@ public class Contoller {
         return "healthy";
     }
 
+    
+    @PostMapping("/login")
     public ResponseEntity<Map<String, String>> login(@RequestBody LoginRequest loginRequest) {
         String hardcodedUsername = "demoUser";
         String hardcodedPassword = "demoPassword";
