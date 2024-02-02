@@ -54,7 +54,6 @@ public class Contoller {
             Map<String, String> response = new HashMap<>();
             response.put("username", username);
             response.put("email", "demoUser@example.com");
-            // Add more user details as needed
             return ResponseEntity.ok(response);
         } else {
             Map<String, String> response = new HashMap<>();
