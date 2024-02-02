@@ -2,11 +2,8 @@ package com.example.demo.controller;
 
 import com.example.demo.model.LoginRequest;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.UUID;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,13 +30,27 @@ public class Contoller {
 
             Map<String, String> response = new HashMap<>();
             response.put("token", token);
-
             return ResponseEntity.ok(response);
         } else {
             Map<String, String> response = new HashMap<>();
             response.put("error", "Invalid credentials");
 
             return ResponseEntity.status(401).body(response);
+        }
+    }
+
+    @GetMapping("/user")
+    public ResponseEntity<Map<String, String>> getUser(@RequestParam String username) {
+        if ("demoUser".equals(username)) {
+            Map<String, String> response = new HashMap<>();
+            response.put("username", username);
+            response.put("email", "demoUser@example.com");
+            // Add more user details as needed
+            return ResponseEntity.ok(response);
+        } else {
+            Map<String, String> response = new HashMap<>();
+            response.put("error", "User not found");
+            return ResponseEntity.status(404).body(response);
         }
     }
 
